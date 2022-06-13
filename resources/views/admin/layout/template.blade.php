@@ -37,15 +37,10 @@
 <body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
-            @include('admin.layout.navbar')
-            @include('admin.layout.sidebar')
-
-            <!-- Main Content -->
-            <div class="main-content">
-                @yield('main')
-            </div>
-            @include('admin.layout.footer')
+            @include('admin/layout.navbar')
+            @include('admin/layout.sidebar')
+            @yield('main')
+            @include('admin/layout.footer')
 
         </div>
     </div>
@@ -75,3 +70,5 @@
 </body>
 
 </html>
+
+
