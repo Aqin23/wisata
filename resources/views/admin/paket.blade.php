@@ -1,7 +1,7 @@
 @extends('admin/layout.template')
 
 @section('main')
-<div class="main-content">
+<!-- <div class="main-content">
     <section class="section">
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -478,5 +478,5 @@
         </div>
       </div>
     </section>
-  </div>
+  </div> -->
 @endsection

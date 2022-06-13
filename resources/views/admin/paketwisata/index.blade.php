@@ -1,76 +1,79 @@
 @extends('admin/layout.template')
 @section('main')
-<div class="col-12 col-md-6 col-lg-6">
-    <div class="card">
-      <div class="card-header">
-        <h4>Full Width</h4>
+<div class="section-header">
+  <h1>Paket Wisata</h1>
+</div>
+
+
+
+
+
+
+<div class="col-12 col-md-12 col-lg-12">
+  <div class="card">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
+    <div class="card-header">
+      <!-- Button trigger for primary themes modal -->
+      <a class="btn btn-outline-primary" href="{{ route('paketwisata.create') }}">
+        + Tambah Paket
+      </a>
+    </div>
+    <div class="card-body p-0">
+
+      <div class="table-responsive">
+        @php
+        $no = 1;
+        @endphp
+        <table class="table table-striped table-md">
+          <tr>
+            <th>No</th>
+            <th>Nama Wisata</th>
+            <th>Foto</th>
+            <th>Action</th>
+          </tr>
+
+          @foreach ($PaketWisata as $p)
+          <tr>
+            <td>{{ $no++ }} </td>
+            <td> {{ $p->nama_wisata }} </td>
+
+            <td>
+              {{ $p->foto }}
+            </td>
+            <form action="{{ route('paketwisata.destroy',$p->id) }}" method="POST">
+              <td><a href="{{ route('paketwisata.edit', $p->id) }}" class="btn btn-warning">Edit</a>
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Anda Yakin Data dihapus?')" class="btn btn-danger btn-xs  "><i class="fas fa-trash"></i></button>
+              </td>
+            </form>
+          </tr>
+          @endforeach
+        </table>
       </div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-striped table-md">
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Created At</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Irwansyah Saputra</td>
-              <td>2017-01-09</td>
-              <td><div class="badge badge-success">Active</div></td>
-              <td><a href="#" class="btn btn-secondary">Detail</a></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Hasan Basri</td>
-              <td>2017-01-09</td>
-              <td><div class="badge badge-success">Active</div></td>
-              <td><a href="#" class="btn btn-secondary">Detail</a></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Kusnadi</td>
-              <td>2017-01-11</td>
-              <td><div class="badge badge-danger">Not Active</div></td>
-              <td><a href="#" class="btn btn-secondary">Detail</a></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Rizal Fakhri</td>
-              <td>2017-01-11</td>
-              <td><div class="badge badge-success">Active</div></td>
-              <td><a href="#" class="btn btn-secondary">Detail</a></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Isnap Kiswandi</td>
-              <td>2017-01-17</td>
-              <td><div class="badge badge-success">Active</div></td>
-              <td><a href="#" class="btn btn-secondary">Detail</a></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class="card-footer text-right">
-        <nav class="d-inline-block">
-          <ul class="pagination mb-0">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    </div>
+    <div class="card-footer text-right">
+      <nav class="d-inline-block">
+        <ul class="pagination mb-0">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
+
 @endsection

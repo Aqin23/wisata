@@ -1,49 +1,43 @@
 @extends('admin/layout.template')
 @section('main')
-<form class="needs-validation" novalidate="">
-    <div class="card-header">
-      <h4>JavaScript Validation (Horizontal Form)</h4>
+<div class="section-header">
+  <h1>Tambah wisata</h1>
+  <div class="section-header-breadcrumb">
+    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+    <div class="breadcrumb-item"><a href="#">Forms</a></div>
+    <div class="breadcrumb-item">Form Validation</div>
+  </div>
+</div>
+
+<div class="section-body">
+
+
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <form action="{{ route('paketwisata.store') }}" method="POST">
+          @csrf
+          <div class="card-body">
+            <div class="form-group">
+              <label>Nama Wisata</label>
+              <input name="nama_wisata" type="text" class="form-control" required="yes">
+            </div>
+            <div class="form-group">
+              <label>Foto</label>
+              <input name="foto" type="text" class="form-control" required="yes">
+            </div>
+
+          </div>
+          <div class="card-footer text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+
+
     </div>
-    <div class="card-body">
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Your Name</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" required="">
-          <div class="invalid-feedback">
-            What's your name?
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-9">
-          <input type="email" class="form-control" required="">
-          <div class="invalid-feedback">
-            Oh no! Email is invalid.
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Subject</label>
-        <div class="col-sm-9">
-          <input type="email" class="form-control">
-          <div class="valid-feedback">
-            Good job!
-          </div>
-        </div>
-      </div>
-      <div class="form-group mb-0 row">
-        <label class="col-sm-3 col-form-label">Message</label>
-        <div class="col-sm-9">
-          <textarea class="form-control" required=""></textarea>
-          <div class="invalid-feedback">
-            What do you wanna say?
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-footer text-right">
-      <button class="btn btn-primary">Submit</button>
-    </div>
-  </form>
+  </div>
+</div>
+
 @endsection

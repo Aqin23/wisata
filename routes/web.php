@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketWisataController;
+use App\Http\Controllers\paketlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,14 @@ use App\Http\Controllers\PaketWisataController;
 */
 
 Route::get('/', function () {
-    return view('admin.paket');
+    return view('admin.layout.template');
+});
+Route::get('/admin', function () {
+    return view('admin.layout.template');
 });
 
-Route::resource('paketwisata.index', PaketWisataController::class);
+// Route::get('/landingpage', [paketlistController::class, 'index'])->name('catalogPaket');
 
+Route::get('/landingpage', 'App\Http\Controllers\paketlistController@index');
+
+Route::resource('paketwisata', PaketWisataController::class);

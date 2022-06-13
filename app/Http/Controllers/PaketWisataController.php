@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PaketWisata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaketWisataController extends Controller
 {
@@ -14,8 +15,8 @@ class PaketWisataController extends Controller
      */
     public function index()
     {
-        $paket = PaketWisata::all();
-        return view('admin.paket', compact('paket'));
+        $PaketWisata = DB::table('paketwisata')->orderBy('id', 'desc')->get();
+        return view('admin.paketwisata.index', ['PaketWisata' => $PaketWisata]);
     }
 
     /**
@@ -25,7 +26,7 @@ class PaketWisataController extends Controller
      */
     public function create()
     {
-        return view('admin.paket_create');
+        return view('admin.paketwisata.create');
     }
 
     /**
@@ -36,11 +37,15 @@ class PaketWisataController extends Controller
      */
     public function store(Request $request)
     {
-        $paket = new PaketWisata;
-        $paket->nama_paket = $request->nama_paket;
-        $paket->foto = $request->foto;
-        $paket->save();
-        return redirect()->route('paketwisata.index');
+        $request->validate([
+            'nama_wisata' => 'required',
+            'foto' => 'required',
+        ]);
+
+        PaketWisata::create($request->all());
+
+        return redirect()->route('paketwisata.index')
+            ->with('success', 'Paket created successfully.');
     }
 
     /**
@@ -51,7 +56,6 @@ class PaketWisataController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
