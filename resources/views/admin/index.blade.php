@@ -42,8 +42,11 @@
             @include('admin.layout.sidebar')
 
             <!-- Main Content -->
-            @yield('main')
+            <div class="main-content">
+                @yield('main')
+            </div>
             @include('admin.layout.footer')
+
         </div>
     </div>
 </body>
