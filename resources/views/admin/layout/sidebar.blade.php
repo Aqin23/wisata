@@ -9,12 +9,10 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
-                    <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
-                </ul>
+                <a href="#" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
+
             </li>
+<<<<<<< HEAD
             <li class="menu-header">Starter</li>
             <li><a class="nav-link" href="{{ route('admin.paketwisata.index') }}"><i class="far fa-square"></i> <span>Paket Wisata</span></a></li>
             <li class="dropdown">
@@ -139,12 +137,15 @@
                 </ul>
             </li>
             <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+=======
+            <li class="">
+                <a href="#" class="nav-link "><i class="fas fa-fire"></i><span>Paket Wisata</span></a>
+
+            </li>
+
+>>>>>>> 2b7ab1e0fc636a0f5834f75b71ada21bdb151efd
         </ul>
 
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                <i class="fas fa-rocket"></i> Documentation
-            </a>
-        </div>
+
     </aside>
 </div>
