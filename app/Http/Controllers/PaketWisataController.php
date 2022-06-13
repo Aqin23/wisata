@@ -67,7 +67,7 @@ class PaketWisataController extends Controller
     public function edit($id)
     {
         $paket = PaketWisata::find($id);
-        return view('admin.paket_edit', compact('paket'));
+        return view('admin.paketwisata.edit', compact('paket'));
     }
 
     /**
