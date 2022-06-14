@@ -66,9 +66,10 @@ class PaketWisataController extends Controller
      */
     public function edit($id)
     {
-        $paket = PaketWisata::find($id);
-        return view('admin.paketwisata.edit', compact('paket'));
+        $PaketWisata = PaketWisata::find($id);
+        return view('admin.paketwisata.edit', compact('PaketWisata'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -79,11 +80,21 @@ class PaketWisataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $paket = PaketWisata::find($id);
-        $paket->nama_paket = $request->nama_paket;
-        $paket->foto = $request->foto;
-        $paket->save();
-        return redirect()->route('paketwisata.index');
+
+        $request->validate([
+            'nama_wisata' => 'required',
+            'foto' => 'required',
+
+        ]);
+        $PaketWisata = PaketWisata::findOrFail($id);
+        $PaketWisata->update([
+            'nama_wisata' => $request->nama_wisata,
+            'foto' => $request->foto,
+
+        ]);
+
+        return redirect()->route('paketwisata.index')
+            ->with('success', 'Berhasil mengubah ');
     }
 
     /**
@@ -96,6 +107,7 @@ class PaketWisataController extends Controller
     {
         $paket = PaketWisata::find($id);
         $paket->delete();
-        return redirect()->route('paketwisata.index');
+        return redirect()->route('paketwisata.index')
+            ->with('success', 'Paket Telah dihapus.');;
     }
 }
