@@ -16,7 +16,7 @@ class CreatePaketwisataTable extends Migration
         Schema::create('paketwisata', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_wisata', 40);
-            $table->char('foto', 10);
+            $table->string('foto');
             $table->timestamps();
         });
     }

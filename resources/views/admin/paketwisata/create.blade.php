@@ -18,7 +18,7 @@
     <div class="col-12 col-md-12 col-lg-12">
       <div class="card">
 
-        <form action="{{ route('paketwisata.store') }}" method="POST">
+        <form action="{{ route('paketwisata.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="card-body">
             <div class="form-group">
@@ -26,8 +26,8 @@
               <input name="nama_wisata" type="text" class="form-control" required="yes">
             </div>
             <div class="form-group">
-              <label>Foto</label>
-              <input name="foto" type="text" class="form-control" required="yes">
+              <label for="foto">Foto</label>
+              <input name="foto" id="foto" type="file" class="form-control" required="yes">
             </div>
 
           </div>

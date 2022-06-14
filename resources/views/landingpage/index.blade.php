@@ -401,11 +401,11 @@
                     @foreach ($PaketWisata as $p)
                     <div class="col-md-4 col-sm-6">
                         <div class="single-package-item">
-                            <img src="{{asset('landingpages/foto/' . $p->foto )}}" alt="package-place">
+                            <img src="{{asset('storage/' . $p->foto )}}" alt="package-place">
                             <div class="single-package-item-txt">
                                 <h3>{{$p->nama_wisata}}</h3>
                                 <div class="packages-para">
-
+                                    Paket Wisata {{$p->nama_wisata}}
                                 </div>
                                 <!--/.packages-para-->
 

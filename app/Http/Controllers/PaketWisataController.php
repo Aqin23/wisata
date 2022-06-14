@@ -39,10 +39,19 @@ class PaketWisataController extends Controller
     {
         $request->validate([
             'nama_wisata' => 'required',
-            'foto' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        PaketWisata::create($request->all());
+        $filename = $request->foto->getClientOriginalName();
+
+        $foto = $request->foto->storeAs('foto', $filename);
+
+
+        // TablePaket::create($request->all());
+        PaketWisata::create([
+            'nama_wisata' => $request->nama_wisata,
+            'foto' => $foto,
+        ]);
 
         return redirect()->route('paketwisata.index')
             ->with('success', 'Paket created successfully.');
