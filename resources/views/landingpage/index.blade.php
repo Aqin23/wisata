@@ -74,7 +74,7 @@
                     <div class="col-sm-2">
                         <div class="logo">
                             <a href="index.html">
-                                tour<span>Nest</span>
+                                Booking<span>Wisata</span>
                             </a>
                         </div><!-- /.logo-->
                     </div><!-- /.col-->
