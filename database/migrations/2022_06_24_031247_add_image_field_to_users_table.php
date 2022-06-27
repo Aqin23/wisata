@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaketwisataTable extends Migration
+class AddImageFieldToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePaketwisataTable extends Migration
      */
     public function up()
     {
-        Schema::create('paketwisata', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_wisata', 40);
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('alamat');
             $table->string('foto');
-            $table->timestamps();
+            $table->enum('role', ['admin', 'user']);
         });
     }
 
@@ -28,6 +27,8 @@ class CreatePaketwisataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paketwisata');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

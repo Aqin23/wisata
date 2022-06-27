@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketWisataController;
+use App\Http\Controllers\detailWisataController;
 use App\Http\Controllers\paketlistController;
 
 /*
@@ -27,3 +28,4 @@ Route::get('/admin', function () {
 Route::get('/landingpage', 'App\Http\Controllers\paketlistController@index');
 
 Route::resource('paketwisata', PaketWisataController::class);
+Route::resource('detailwisata', detailWisataController::class);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaketwisataTable extends Migration
+class CreateDetailwisataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreatePaketwisataTable extends Migration
      */
     public function up()
     {
-        Schema::create('paketwisata', function (Blueprint $table) {
+        Schema::create('detailwisata', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_wisata', 40);
-            $table->string('foto');
+            $table->foreignId('id_paketwisata')->constrained('paketwisata')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama_paket');
+            $table->string('harga');
+            $table->text('desc');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreatePaketwisataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paketwisata');
+        Schema::dropIfExists('detailwisata');
     }
 }

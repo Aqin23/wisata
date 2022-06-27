@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PaketWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class PaketWisataController extends Controller
 {
@@ -75,6 +76,7 @@ class PaketWisataController extends Controller
      */
     public function edit($id)
     {
+
         $PaketWisata = PaketWisata::find($id);
         return view('admin.paketwisata.edit', compact('PaketWisata'));
     }
@@ -95,12 +97,24 @@ class PaketWisataController extends Controller
             'foto' => 'required',
 
         ]);
-        $PaketWisata = PaketWisata::findOrFail($id);
-        $PaketWisata->update([
-            'nama_wisata' => $request->nama_wisata,
-            'foto' => $request->foto,
 
-        ]);
+        if ($request->foto) {
+            $filename = $request->foto->getClientOriginalName();
+            $foto = $request->foto->storeAs('foto', $filename);
+            $PaketWisata = PaketWisata::findOrFail($id);
+            $PaketWisata->update([
+                'nama_wisata' => $request->nama_wisata,
+                'foto' => $foto,
+
+            ]);
+        } else {
+            $PaketWisata = PaketWisata::findOrFail($id);
+            $PaketWisata->update([
+                'nama_wisata' => $request->nama_wisata,
+            ]);
+        }
+
+
 
         return redirect()->route('paketwisata.index')
             ->with('success', 'Berhasil mengubah ');

@@ -1,12 +1,23 @@
 @extends('admin/layout.template')
 @section('main')
+    {{-- <table id="datatable1">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Andi</td>
+            </tr>
+        </tbody>
+    </table> --}}
+
     <div class="section-header">
-        <h1>Paket Wisata</h1>
+        <h1>Detail Paket Wisata</h1>
     </div>
-
-
-
-
 
 
     <div class="col-12 col-md-12 col-lg-12">
@@ -18,46 +29,47 @@
             @endif
             <div class="card-header">
                 <!-- Button trigger for primary themes modal -->
-                <a class="btn btn-outline-primary" href="{{ route('paketwisata.create') }}">
-                    + Tambah Paket
+
+
+                <a class="btn btn-outline-primary" href="{{ route('detailwisata.create') }}">
+                    + Tambah Detail Paket
                 </a>
+
+
             </div>
             <div class="card-body p-0">
-
                 <table id="datatable1" class="table table-striped table-md">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Wisata</th>
-                            <th>Foto</th>
-                            <th>Action</th>
+                            <th>Nama Paket</th>
+                            <th>Kategori Paket</th>
+                            <th>Harga</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
-
-                    @foreach ($PaketWisata as $p)
-                        <tbody>
+                    <tbody>
+                        @foreach ($DetailWisata as $p)
                             <tr>
                                 <td>{{ $loop->iteration }} </td>
-                                <td> {{ $p->nama_wisata }} </td>
-
+                                <td> {{ $p->paketFk->nama_wisata }} </td>
+                                <td> {{ $p->nama_paket }} </td>
+                                <td> {{ $p->harga }} </td>
+                                <td> {{ $p->desc }} </td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $p->foto) }}" width="70px" alt="">
-
-                                </td>
-
-                                <td>
-                                    <form action="{{ route('paketwisata.destroy', $p->id) }}" method="POST">
-                                        <a href="{{ route('paketwisata.edit', $p->id) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('detailwisata.destroy', $p->id) }}" method="POST">
+                                        <a href="{{ route('detailwisata.edit', $p->id) }}"
+                                            class="btn btn-warning">Edit</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Anda Yakin Data dihapus?')"
                                             class="btn btn-danger btn-xs  "><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
-
                             </tr>
-                        </tbody>
-                    @endforeach
+                        @endforeach
+                    </tbody>
                 </table>
 
             </div>

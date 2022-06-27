@@ -29,7 +29,7 @@
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card">
 
-                <form action="{{ route('paketwisata.update', $PaketWisata->id) }}" method="POST">
+                <form action="{{ route('paketwisata.update', $PaketWisata->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label>Foto</label>
-                            <input name="foto" type="text" value="{{ $PaketWisata->foto }}" class="form-control" required="yes">
+                            <input name="foto" id="foto" type="file" class="form-control">
                         </div>
 
                     </div>
