@@ -107,8 +107,11 @@ class userController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('user.index')
+            ->with('success', 'Paket Telah dihapus.');;
     }
 }

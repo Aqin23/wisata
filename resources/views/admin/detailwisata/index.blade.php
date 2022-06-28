@@ -58,7 +58,7 @@
                                 <td> {{ $p->harga }} </td>
                                 <td> {{ $p->desc }} </td>
                                 <td>
-                                    <form action="{{ route('detailwisata.destroy', $p->id) }}" method="POST">
+                                    <form action="{{ route('user.destroy', $p->id) }}" method="POST">
                                         <a href="{{ route('detailwisata.edit', $p->id) }}"
                                             class="btn btn-warning">Edit</a>
                                         @csrf
