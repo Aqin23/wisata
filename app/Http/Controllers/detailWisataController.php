@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Dompdf\Adapter\PDFLib;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class detailWisataController extends Controller
@@ -22,9 +23,13 @@ class detailWisataController extends Controller
     {
         $DetailWisata = DetailWisata::orderBy('id', 'desc')->get();
         // dd($DetailWisata);
-        return view('admin.detailwisata.index', [
-            'DetailWisata' => $DetailWisata
-        ]);
+        if (empty(Auth::user()) || Auth::user()->role == 'pelanggan') {
+            return redirect()->route('homePage');
+        } else {
+            return view('admin.detailwisata.index', [
+                'DetailWisata' => $DetailWisata
+            ]);
+        }
     }
 
 

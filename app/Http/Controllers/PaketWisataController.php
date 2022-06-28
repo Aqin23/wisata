@@ -6,6 +6,7 @@ use App\Models\PaketWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class PaketWisataController extends Controller
 {
@@ -17,7 +18,12 @@ class PaketWisataController extends Controller
     public function index()
     {
         $PaketWisata = DB::table('paketwisata')->orderBy('id', 'desc')->get();
-        return view('admin.paketwisata.index', ['PaketWisata' => $PaketWisata]);
+
+        if (empty(Auth::user()) || Auth::user()->role == 'pelanggan') {
+            return redirect()->route('homePage');
+        } else {
+            return view('admin.paketwisata.index', ['PaketWisata' => $PaketWisata]);
+        }
     }
 
     /**
@@ -39,8 +45,10 @@ class PaketWisataController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required',
+            'email' => 'required',
             'nama_wisata' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
 
         $filename = $request->foto->getClientOriginalName();

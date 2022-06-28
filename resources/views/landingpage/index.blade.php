@@ -14,57 +14,57 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
 
     <!-- TITLE OF SITE -->
-    <title>Travel</title>
+    <title>JemberTravel</title>
 
     <!-- favicon img -->
-    <link rel="shortcut icon" type="image/icon" href="{{asset('landingpages/logo/favicon.png')}}" />
+    <link rel="shortcut icon" type="image/icon" href="{{ asset('landingpages/logo/favicon.png') }}" />
 
     <!--font-awesome.min.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/font-awesome.min.css') }}" />
 
     <!--animate.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/animate.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/animate.css') }}" />
 
     <!--hover.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/hover-min.css')}}">
+    <link rel="stylesheet" href="{{ asset('landingpages/css/hover-min.css') }}">
 
     <!--datepicker.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/datepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('landingpages/css/datepicker.css') }}">
 
     <!--owl.carousel.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('landingpages/css/owl.theme.default.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('landingpages/css/owl.theme.default.min.css') }}" />
 
     <!-- range css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/jquery-ui.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/jquery-ui.min.css') }}" />
 
     <!--bootstrap.min.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/bootstrap.min.css') }}" />
 
     <!-- bootsnav -->
-    <link rel="stylesheet" href="{{asset('landingpages/css/bootsnav.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/bootsnav.css') }}" />
 
     <!--style.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/style.css') }}" />
 
     <!--responsive.css-->
-    <link rel="stylesheet" href="{{asset('landingpages/css/responsive.css')}}" />
+    <link rel="stylesheet" href="{{ asset('landingpages/css/responsive.css') }}" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
     <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
 </head>
 
 <body>
     <!--[if lte IE 9]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-			your browser</a> to improve your experience and security.</p>
-		<![endif]-->
+  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+   your browser</a> to improve your experience and security.</p>
+  <![endif]-->
 
     <!-- main-menu Start -->
     <header class="top-area">
@@ -73,8 +73,8 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="logo">
-                            <a href="index.html">
-                                Booking<span>Wisata</span>
+                            <a href=" {{ route('homePage') }} ">
+                                Jember<span>Travel</span>
                             </a>
                         </div><!-- /.logo-->
                     </div><!-- /.col-->
@@ -83,21 +83,30 @@
 
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target=".navbar-collapse">
                                     <i class="fa fa-bars"></i>
                                 </button><!-- / button-->
                             </div><!-- /.navbar-header-->
                             <div class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="smooth-menu"><a href="#home">home</a></li>
-                                    <li class="smooth-menu"><a href="#gallery">Destination</a></li>
                                     <li class="smooth-menu"><a href="#pack">Katalog</a></li>
-                                    <li class="smooth-menu"><a href="#spo">Special Offers</a></li>
-                                    <li class="smooth-menu"><a href="#blog">blog</a></li>
-                                    <li class="smooth-menu"><a href="#subs">subscription</a></li>
-                                    <li>
-
-                                    </li>
+                                    <li class="smooth-menu"><a href="#gallery">Gallery</a></li>
+                                    @guest
+                                        <li><a href="{{ route('login') }}">login</a></li>
+                                    @else
+                                        <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @endguest
                                     <!--/.project-btn-->
                                 </ul>
                             </div><!-- /.navbar-collapse -->
@@ -166,7 +175,7 @@
                 <div class="col-md-4 col-sm-4">
                     <div class="single-service-box">
                         <div class="service-img">
-                            <img src="{{asset('landingpages/images/service/s1.png')}}" alt="service-icon" />
+                            <img src="{{ asset('landingpages/images/service/s1.png') }}" alt="service-icon" />
                         </div>
                         <!--/.service-img-->
                         <div class="service-content">
@@ -186,7 +195,7 @@
                 <div class="col-md-4 col-sm-4">
                     <div class="single-service-box">
                         <div class="service-img">
-                            <img src="{{asset('landingpages/images/service/s2.png')}}" alt="service-icon" />
+                            <img src="{{ asset('landingpages/images/service/s2.png') }}" alt="service-icon" />
                         </div>
                         <!--/.service-img-->
                         <div class="service-content">
@@ -206,7 +215,7 @@
                 <div class="col-md-4 col-sm-4">
                     <div class="single-service-box">
                         <div class="statistics-img">
-                            <img src="{{asset('landingpages/images/service/s3.png')}}" alt="service-icon" />
+                            <img src="{{ asset('landingpages/images/service/s3.png') }}" alt="service-icon" />
                         </div>
                         <!--/.service-img-->
                         <div class="service-content">
@@ -233,110 +242,69 @@
     <!--/.service-->
     <!--service end-->
 
-    <!--galley start-->
-    <section id="gallery" class="gallery">
+    <section id="pack" class="packages">
         <div class="container">
-            <div class="gallery-details">
-                <div class="gallary-header text-center">
-                    <h2>
-                        top destination
-                    </h2>
-                    <p>
-                        Where do you wanna go? How much you wanna explore?
-                    </p>
-                </div>
-                <!--/.gallery-header-->
-                <div class="gallery-box">
-                    <div class="gallery-content">
-                        <div class="filtr-container">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="filtr-item">
-                                        <img src="{{asset('landingpages/images/gallary/g1.jpg')}}" alt="portfolio image" />
-                                        <div class="item-title">
-                                            <a href="#">
-                                                china
-                                            </a>
-                                            <p><span>20 tours</span><span>15 places</span></p>
-                                        </div><!-- /.item-title -->
-                                    </div><!-- /.filtr-item -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-6">
-                                    <div class="filtr-item">
-                                        <img src="{{asset('landingpages/images/gallary/g2.jpg')}}" alt="portfolio image" />
-                                        <div class="item-title">
-                                            <a href="#">
-                                                venuzuala
-                                            </a>
-                                            <p><span>12 tours</span><span>9 places</span></p>
-                                        </div> <!-- /.item-title-->
-                                    </div><!-- /.filtr-item -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-4">
-                                    <div class="filtr-item">
-                                        <img src="{{asset('landingpages/images/gallary/g3.jpg')}}" alt="portfolio image" />
-                                        <div class="item-title">
-                                            <a href="#">
-                                                brazil
-                                            </a>
-                                            <p><span>25 tours</span><span>10 places</span></p>
-                                        </div><!-- /.item-title -->
-                                    </div><!-- /.filtr-item -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-4">
-                                    <div class="filtr-item">
-                                        <img src="{{asset('landingpages/images/gallary/g4.jpg')}}" alt="portfolio image" />
-                                        <div class="item-title">
-                                            <a href="#">
-                                                australia
-                                            </a>
-                                            <p><span>18 tours</span><span>9 places</span></p>
-                                        </div> <!-- /.item-title-->
-                                    </div><!-- /.filtr-item -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-4">
-                                    <div class="filtr-item">
-                                        <img src="{{asset('landingpages/images/gallary/g5.jpg')}}" alt="portfolio image" />
-                                        <div class="item-title">
-                                            <a href="#">
-                                                netharlands
-                                            </a>
-                                            <p><span>14 tours</span><span>12 places</span></p>
-                                        </div> <!-- /.item-title-->
-                                    </div><!-- /.filtr-item -->
-                                </div><!-- /.col -->
-
-                                <div class="col-md-8">
-                                    <div class="filtr-item">
-                                        <img src="{{asset('landingpages/images/gallary/g6.jpg')}}" alt="portfolio image" />
-                                        <div class="item-title">
-                                            <a href="#">
-                                                turkey
-                                            </a>
-                                            <p><span>14 tours</span><span>6 places</span></p>
-                                        </div> <!-- /.item-title-->
-                                    </div><!-- /.filtr-item -->
-                                </div><!-- /.col -->
-
-                            </div><!-- /.row -->
-
-                        </div><!-- /.filtr-container-->
-                    </div><!-- /.gallery-content -->
-                </div>
-                <!--/.galley-box-->
+            <div class="gallary-header text-center">
+                <h2>
+                    Katalog
+                </h2>
+                <p>
+                    Katalog berbagai wisata di Jawa timur
+                </p>
             </div>
-            <!--/.gallery-details-->
+            <!--/.gallery-header-->
+            <div class="packages-content">
+                <div class="row">
+                    @foreach ($PaketWisata as $p)
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single-package-item">
+                                <img src="{{ asset('storage/' . $p->foto) }}" alt="package-place">
+                                <div class="single-package-item-txt">
+                                    <h3>{{ $p->nama_wisata }}</h3>
+                                    <div class="packages-para">
+                                        Paket Wisata {{ $p->nama_wisata }}
+                                    </div>
+                                    <!--/.packages-para-->
+
+                                    <!--/.packages-review-->
+                                    <div class="about-btn">
+                                        <button class="about-view packages-btn">
+                                            Detail
+                                        </button>
+                                    </div>
+                                    <!--/.about-btn-->
+                                </div>
+                                <!--/.single-package-item-txt-->
+                            </div>
+                            <!--/.single-package-item-->
+
+                        </div>
+                    @endforeach
+                    <!--/.col-->
+
+                    <!--/.about-btn-->
+                </div>
+                <!--/.single-package-item-txt-->
+            </div>
+            <!--/.single-package-item-->
+
+        </div>
+        <!--/.col-->
+
+
+        <!--/.col-->
+
+
+        <!--/.col-->
+
+        </div>
+        <!--/.row-->
+        </div>
+        <!--/.packages-content-->
         </div>
         <!--/.container-->
 
     </section>
-    <!--/.gallery-->
-    <!--gallery end-->
 
 
     <!--discount-offer start-->
@@ -385,72 +353,119 @@
     <!--discount-offer end-->
 
     <!--packages start-->
-    <section id="pack" class="packages">
+
+    <!--/.packages-->
+    <!--packages end-->
+    <!--galley start-->
+    <section id="gallery" class="gallery">
         <div class="container">
-            <div class="gallary-header text-center">
-                <h2>
-                    Katalog
-                </h2>
-                <p>
-                    Katalog berbagai wisata di Jawa timur
-                </p>
-            </div>
-            <!--/.gallery-header-->
-            <div class="packages-content">
-                <div class="row">
-                    @foreach ($PaketWisata as $p)
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-package-item">
-                            <img src="{{asset('storage/' . $p->foto )}}" alt="package-place">
-                            <div class="single-package-item-txt">
-                                <h3>{{$p->nama_wisata}}</h3>
-                                <div class="packages-para">
-                                    Paket Wisata {{$p->nama_wisata}}
-                                </div>
-                                <!--/.packages-para-->
-
-                                <!--/.packages-review-->
-                                <div class="about-btn">
-                                    <button class="about-view packages-btn">
-                                        Detail
-                                    </button>
-                                </div>
-                                <!--/.about-btn-->
-                            </div>
-                            <!--/.single-package-item-txt-->
-                        </div>
-                        <!--/.single-package-item-->
-
-                    </div>
-                    @endforeach
-                    <!--/.col-->
-
-                    <!--/.about-btn-->
+            <div class="gallery-details">
+                <div class="gallary-header text-center">
+                    <h2>
+                        Galeri
+                    </h2>
+                    <p>
+                        Galeri Wisata Jember
+                    </p>
                 </div>
-                <!--/.single-package-item-txt-->
+                <!--/.gallery-header-->
+                <div class="gallery-box">
+                    <div class="gallery-content">
+                        <div class="filtr-container">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="filtr-item">
+                                        <img src="{{ asset('landingpages/images/gallary/g1.jpg') }}"
+                                            alt="portfolio image" />
+                                        <div class="item-title">
+                                            <a href="#">
+                                                china
+                                            </a>
+                                            <p><span>20 tours</span><span>15 places</span></p>
+                                        </div><!-- /.item-title -->
+                                    </div><!-- /.filtr-item -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-6">
+                                    <div class="filtr-item">
+                                        <img src="{{ asset('landingpages/images/gallary/g2.jpg') }}"
+                                            alt="portfolio image" />
+                                        <div class="item-title">
+                                            <a href="#">
+                                                venuzuala
+                                            </a>
+                                            <p><span>12 tours</span><span>9 places</span></p>
+                                        </div> <!-- /.item-title-->
+                                    </div><!-- /.filtr-item -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-4">
+                                    <div class="filtr-item">
+                                        <img src="{{ asset('landingpages/images/gallary/g3.jpg') }}"
+                                            alt="portfolio image" />
+                                        <div class="item-title">
+                                            <a href="#">
+                                                brazil
+                                            </a>
+                                            <p><span>25 tours</span><span>10 places</span></p>
+                                        </div><!-- /.item-title -->
+                                    </div><!-- /.filtr-item -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-4">
+                                    <div class="filtr-item">
+                                        <img src="{{ asset('landingpages/images/gallary/g4.jpg') }}"
+                                            alt="portfolio image" />
+                                        <div class="item-title">
+                                            <a href="#">
+                                                australia
+                                            </a>
+                                            <p><span>18 tours</span><span>9 places</span></p>
+                                        </div> <!-- /.item-title-->
+                                    </div><!-- /.filtr-item -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-4">
+                                    <div class="filtr-item">
+                                        <img src="{{ asset('landingpages/images/gallary/g5.jpg') }}"
+                                            alt="portfolio image" />
+                                        <div class="item-title">
+                                            <a href="#">
+                                                netharlands
+                                            </a>
+                                            <p><span>14 tours</span><span>12 places</span></p>
+                                        </div> <!-- /.item-title-->
+                                    </div><!-- /.filtr-item -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-8">
+                                    <div class="filtr-item">
+                                        <img src="{{ asset('landingpages/images/gallary/g6.jpg') }}"
+                                            alt="portfolio image" />
+                                        <div class="item-title">
+                                            <a href="#">
+                                                turkey
+                                            </a>
+                                            <p><span>14 tours</span><span>6 places</span></p>
+                                        </div> <!-- /.item-title-->
+                                    </div><!-- /.filtr-item -->
+                                </div><!-- /.col -->
+
+                            </div><!-- /.row -->
+
+                        </div><!-- /.filtr-container-->
+                    </div><!-- /.gallery-content -->
+                </div>
+                <!--/.galley-box-->
             </div>
-            <!--/.single-package-item-->
-
-        </div>
-        <!--/.col-->
-
-
-        <!--/.col-->
-
-
-        <!--/.col-->
-
-        </div>
-        <!--/.row-->
-        </div>
-        <!--/.packages-content-->
+            <!--/.gallery-details-->
         </div>
         <!--/.container-->
 
     </section>
-    <!--/.packages-->
-    <!--packages end-->
-
+    <!--/.gallery-->
+    <!--gallery end-->
     <!-- testemonial Start -->
     <section class="testemonial">
         <div class="container">
@@ -471,7 +486,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial1.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial1.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -479,7 +494,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -498,7 +514,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial2.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial2.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -506,7 +522,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -525,7 +542,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial1.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial1.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -533,7 +550,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -552,7 +570,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial1.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial1.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -560,7 +578,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -579,7 +598,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial2.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial2.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -587,7 +606,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -606,7 +626,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial1.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial1.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -614,7 +634,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -633,7 +654,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial1.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial1.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -641,7 +662,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -660,7 +682,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial2.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial2.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -668,7 +690,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -687,7 +710,7 @@
                 <div class="home1-testm item">
                     <div class="home1-testm-single text-center">
                         <div class="home1-testm-img">
-                            <img src="{{asset('landingpages/images/client/testimonial1.jpg')}}" alt="img" />
+                            <img src="{{ asset('landingpages/images/client/testimonial1.jpg') }}" alt="img" />
                         </div>
                         <!--/.home1-testm-img-->
                         <div class="home1-testm-txt">
@@ -695,7 +718,8 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
                             <p>
-                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam.
                             </p>
                             <h3>
                                 <a href="#">
@@ -722,214 +746,12 @@
 
 
     <!--special-offer start-->
-    <section id="spo" class="special-offer">
-        <div class="container">
-            <div class="special-offer-content">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="single-special-offer">
-                            <div class="single-special-offer-txt">
-                                <h2>thiland</h2>
-                                <div class="packages-review special-offer-review">
-                                    <p>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <span>2544 review</span>
-                                    </p>
-                                </div>
-                                <!--/.packages-review-->
-                                <div class="packages-para special-offer-para">
-                                    <p>
-                                        <span>
-                                            <i class="fa fa-angle-right"></i> 5 Days 6 nights
-                                        </span>
-                                        <span>
-                                            <i class="fa fa-angle-right"></i> 2 person
-                                        </span>
-                                        <span>
-                                            <i class="fa fa-angle-right"></i> 5 star accomodation
-                                        </span>
-                                    </p>
-                                    <p>
-                                        <span>
-                                            <i class="fa fa-angle-right"></i> transportation
-                                        </span>
-                                        <span>
-                                            <i class="fa fa-angle-right"></i> food facilities
-                                        </span>
-                                    </p>
-                                    <p class="offer-para">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tem ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation una <br> ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    </p>
-                                </div>
-                                <!--/.packages-para-->
-                                <div class="offer-btn-group">
-                                    <div class="about-btn">
-                                        <button class="about-view packages-btn offfer-btn">
-                                            make tour
-                                        </button>
-                                    </div>
-                                    <!--/.about-btn-->
-                                    <div class="about-btn">
-                                        <button class="about-view packages-btn">
-                                            book now
-                                        </button>
-                                    </div>
-                                    <!--/.about-btn-->
-                                </div>
-                                <!--/.offer-btn-group-->
-                            </div>
-                            <!--/.single-special-offer-txt-->
-                        </div>
-                        <!--/.single-special-offer-->
-                    </div>
-                    <!--/.col-->
-                    <div class="col-sm-4">
-                        <div class="single-special-offer">
-                            <div class="single-special-offer-bg">
-                                <img src="{{asset('landingpages/images/offer/offer-shape.png')}}" alt="offer-shape">
-                            </div>
-                            <!--/.single-special-offer-bg-->
-                            <div class="single-special-shape-txt">
-                                <h3>special offer</h3>
-                                <h4><span>40%</span><br>off</h4>
-                                <p><span>$999</span><br>reguler $ 1450</p>
-                            </div>
-                            <!--/.single-special-shape-txt-->
-                        </div>
-                        <!--/.single-special-offer-->
-                    </div>
-                    <!--/.col-->
-                </div>
-                <!--/.row-->
-            </div>
-            <!--/.special-offer-content-->
-        </div>
-        <!--/.container-->
 
-    </section>
     <!--/.special-offer end-->
     <!--special-offer end-->
 
     <!--blog start-->
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="blog-details">
-                <div class="gallary-header text-center">
-                    <h2>
-                        latest news
-                    </h2>
-                    <p>
-                        Travel News from all over the world
-                    </p>
-                </div>
-                <!--/.gallery-header-->
-                <div class="blog-content">
-                    <div class="row">
 
-                        <div class="col-sm-4 col-md-4">
-                            <div class="thumbnail">
-                                <h2>trending news <span>15 november 2017</span></h2>
-                                <div class="thumbnail-img">
-                                    <img src="{{asset('landingpages/images/blog/b1.jpg')}}" alt="blog-img">
-                                    <div class="thumbnail-img-overlay"></div>
-                                    <!--/.thumbnail-img-overlay-->
-
-                                </div>
-                                <!--/.thumbnail-img-->
-
-                                <div class="caption">
-                                    <div class="blog-txt">
-                                        <h3>
-                                            <a href="#">
-                                                Discover on beautiful weather, Fantastic foods and historical place in Prag
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                        </p>
-                                        <a href="#">Read More</a>
-                                    </div>
-                                    <!--/.blog-txt-->
-                                </div>
-                                <!--/.caption-->
-                            </div>
-                            <!--/.thumbnail-->
-
-                        </div>
-                        <!--/.col-->
-
-                        <div class="col-sm-4 col-md-4">
-                            <div class="thumbnail">
-                                <h2>trending news <span>15 november 2017</span></h2>
-                                <div class="thumbnail-img">
-                                    <img src="{{asset('landingpages/images/blog/b2.jpg')}}" alt="blog-img">
-                                    <div class="thumbnail-img-overlay"></div>
-                                    <!--/.thumbnail-img-overlay-->
-
-                                </div>
-                                <!--/.thumbnail-img-->
-                                <div class="caption">
-                                    <div class="blog-txt">
-                                        <h3>
-                                            <a href="#">
-                                                Discover on beautiful weather, Fantastic foods and historical place in india
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                        </p>
-                                        <a href="#">Read More</a>
-                                    </div>
-                                    <!--/.blog-txt-->
-                                </div>
-                                <!--/.caption-->
-                            </div>
-                            <!--/.thumbnail-->
-
-                        </div>
-                        <!--/.col-->
-
-                        <div class="col-sm-4 col-md-4">
-                            <div class="thumbnail">
-                                <h2>trending news <span>15 november 2017</span></h2>
-                                <div class="thumbnail-img">
-                                    <img src="{{asset('landingpages/images/blog/b3.jpg')}}" alt="blog-img">
-                                    <div class="thumbnail-img-overlay"></div>
-                                    <!--/.thumbnail-img-overlay-->
-
-                                </div>
-                                <!--/.thumbnail-img-->
-                                <div class="caption">
-                                    <div class="blog-txt">
-                                        <h3><a href="#">10 Most Natural place to Discover</a></h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                        </p>
-                                        <a href="#">Read More</a>
-                                    </div>
-                                    <!--/.blog-txt-->
-                                </div>
-                                <!--/.caption-->
-                            </div>
-                            <!--/.thumbnail-->
-
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-                </div>
-                <!--/.blog-content-->
-            </div>
-            <!--/.blog-details-->
-        </div>
-        <!--/.container-->
-
-    </section>
     <!--/.blog-->
     <!--blog end-->
 
@@ -1041,16 +863,20 @@
             <hr>
             <div class="foot-icons ">
                 <ul class="footer-social-links list-inline list-unstyled">
-                    <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a>
+                    </li>
                 </ul>
                 <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
 
             </div>
             <!--/.foot-icons-->
             <div id="scroll-Top">
-                <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip"
+                    data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
             </div>
             <!--/.scroll-Top-->
         </div><!-- /.container-->
@@ -1061,7 +887,7 @@
 
 
 
-    <script src="{{asset('landingpages/js/jquery.js')}}"></script>
+    <script src="{{ asset('landingpages/js/jquery.js') }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <!--modernizr.min.js-->
@@ -1069,34 +895,34 @@
 
 
     <!--bootstrap.min.js-->
-    <script src="{{asset('landingpages/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('landingpages/js/bootstrap.min.js') }}"></script>
 
     <!-- bootsnav js -->
-    <script src="{{asset('landingpages/js/bootsnav.js')}}"></script>
+    <script src="{{ asset('landingpages/js/bootsnav.js') }}"></script>
 
     <!-- jquery.filterizr.min.js -->
-    <script src="{{asset('landingpages/js/jquery.filterizr.min.js')}}"></script>
+    <script src="{{ asset('landingpages/js/jquery.filterizr.min.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
     <!--jquery-ui.min.js-->
-    <script src="{{asset('landingpages/js/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('landingpages/js/jquery-ui.min.js') }}"></script>
 
     <!-- counter js -->
-    <script src="{{asset('landingpages/js/jquery.counterup.min.js')}}"></script>
-    <script src="{{asset('landingpages/js/waypoints.min.js')}}"></script>
+    <script src="{{ asset('landingpages/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('landingpages/js/waypoints.min.js') }}"></script>
 
     <!--owl.carousel.js-->
-    <script src="{{asset('landingpages/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('landingpages/js/owl.carousel.min.js') }}"></script>
 
     <!-- jquery.sticky.js -->
-    <script src="{{asset('landingpages/js/jquery.sticky.js')}}"></script>
+    <script src="{{ asset('landingpages/js/jquery.sticky.js') }}"></script>
 
     <!--datepicker.js-->
-    <script src="{{asset('landingpages/js/datepicker.js')}}"></script>
+    <script src="{{ asset('landingpages/js/datepicker.js') }}"></script>
 
     <!--Custom JS-->
-    <script src="{{asset('landingpages/js/custom.js')}}"></script>
+    <script src="{{ asset('landingpages/js/custom.js') }}"></script>
 
 
 </body>
