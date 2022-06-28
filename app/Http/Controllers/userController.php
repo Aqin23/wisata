@@ -84,9 +84,14 @@ class userController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $User = User::find($id);
+
+        return view('admin.user.edit', [
+            'User' => $User,
+
+        ]);
     }
 
     /**
@@ -96,9 +101,29 @@ class userController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required', 'email',
+            'alamat' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+
+        ]);
+
+        $User = User::findOrFail($id);
+        $User->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'password' => Hash::make($request['password']),
+            'role' => $request->role,
+
+        ]);
+
+        return redirect()->route('user.index')
+            ->with('success', 'Berhasil mengubah ');
     }
 
     /**
