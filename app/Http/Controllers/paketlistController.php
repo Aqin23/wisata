@@ -14,6 +14,6 @@ class paketlistController extends Controller
         //
         $PaketWisata = DB::table('paketwisata')->get();
         // mengirim data mahasiswa ke view daftar
-        return view('landingpage.index', ['PaketWisata' => $PaketWisata]);
+        return view('landingpage.main.home', ['PaketWisata' => $PaketWisata]);
     }
 }

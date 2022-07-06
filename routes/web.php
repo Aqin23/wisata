@@ -5,6 +5,7 @@ use App\Http\Controllers\PaketWisataController;
 use App\Http\Controllers\detailWisataController;
 use App\Http\Controllers\MultiUser;
 use App\Http\Controllers\paketlistController;
+use App\Http\Controllers\detailpaketlistController;
 use App\Http\Controllers\userController;
 
 /*
@@ -29,6 +30,7 @@ Auth::routes();
 
 Route::get('/', [MultiUser::class, 'index'])->name('/');
 Route::get('/home', [paketlistController::class, 'index'])->name('homePage');
+Route::get('/DetailList/{id}', [detailpaketlistController::class, 'show'])->name('detailList');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

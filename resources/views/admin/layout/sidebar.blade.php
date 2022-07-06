@@ -25,12 +25,18 @@
 
             </li>
 
-            <li class="{{ Nav::isResource('user') }}">
-                <a href="{{ url('/user') }}" class="nav-link "><i class="fas fa-users"></i><span>User</span></a>
+            <li class="{{ Nav::isResource('booking') }}">
+                <a href="{{ url('/booking') }}" class="nav-link "><i
+                        class="fas fa-money-bill"></i><span>Booking</span></a>
 
             </li>
 
+            @if (empty(Auth::user()) || Auth::user()->role == 'admin')
+                <li class="{{ Nav::isResource('user') }}">
+                    <a href="{{ url('/user') }}" class="nav-link "><i class="fas fa-users"></i><span>User</span></a>
 
+                </li>
+            @endif
         </ul>
 
 
