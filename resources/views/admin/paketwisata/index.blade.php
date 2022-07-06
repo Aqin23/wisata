@@ -3,12 +3,6 @@
     <div class="section-header">
         <h1>Paket Wisata</h1>
     </div>
-
-
-
-
-
-
     <div class="col-12 col-md-12 col-lg-12">
         <div class="card">
             @if ($message = Session::get('success'))
@@ -22,9 +16,9 @@
                     + Tambah Paket
                 </a>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body ">
 
-                <table id="datatable1" class="table table-striped table-md">
+                <table id="paket" class="table table-striped table-md">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -33,9 +27,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-
-                    @foreach ($PaketWisata as $p)
-                        <tbody>
+                    <tbody>
+                        @foreach ($PaketWisata as $p)
                             <tr>
                                 <td>{{ $loop->iteration }} </td>
                                 <td> {{ $p->nama_wisata }} </td>
@@ -46,6 +39,7 @@
                                 </td>
 
                                 <td>
+
                                     <form action="{{ route('paketwisata.destroy', $p->id) }}" method="POST">
                                         <a href="{{ route('paketwisata.edit', $p->id) }}" class="btn btn-warning">Edit</a>
                                         @csrf
@@ -56,8 +50,8 @@
                                 </td>
 
                             </tr>
-                        </tbody>
-                    @endforeach
+                        @endforeach
+                    </tbody>
                 </table>
 
             </div>
@@ -65,3 +59,24 @@
         </div>
     </div>
 @endsection
+@push('script-custom')
+    <script>
+        $(function() {
+            var jml = $('th').length;
+            // alert(jml - 1)
+            var col = jml - 1;
+            $("#paket").DataTable({
+                columnDefs: [{
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": col,
+                }],
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#paket_wrapper .col-md-6:eq(0)');
+
+        });
+    </script>
+@endpush

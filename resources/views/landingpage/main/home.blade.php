@@ -26,6 +26,7 @@
                                     <li class="smooth-menu"><a href="#home">Home</a></li>
                                     <li class="smooth-menu"><a href="#pack">Katalog</a></li>
                                     <li class="smooth-menu"><a href="#gallery">Gallery</a></li>
+                                    <li><a href="{{ route('pesanan') }}">Pesanan</a></li>
                                     @guest
                                         <li><a href="{{ route('login') }}">login</a></li>
                                     @else

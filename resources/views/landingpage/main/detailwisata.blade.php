@@ -29,8 +29,8 @@
 
                                     <!--/.packages-review-->
                                     <div class="about-btn">
-                                        <a href="" class="about-view packages-btn">
-                                            Detail
+                                        <a href="{{ route('checkout', $p->id) }}" class="about-view packages-btn">
+                                            Pesan
                                         </a>
                                     </div>
                                     <!--/.about-btn-->

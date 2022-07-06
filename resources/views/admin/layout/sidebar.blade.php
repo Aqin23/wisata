@@ -26,8 +26,8 @@
             </li>
 
             <li class="{{ Nav::isResource('booking') }}">
-                <a href="{{ url('/booking') }}" class="nav-link "><i
-                        class="fas fa-money-bill"></i><span>Booking</span></a>
+                <a href="{{ route('managePesanan') }}" class="nav-link "><i
+                        class="fas fa-money-bill"></i><span>Pesanan</span></a>
 
             </li>
 

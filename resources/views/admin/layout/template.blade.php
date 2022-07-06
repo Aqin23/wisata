@@ -95,7 +95,7 @@
 <script src="{{ asset('adminn/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminn/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminn/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
+@stack('script-custom')
 <script>
     $(function() {
         $("#datatable1").DataTable({
@@ -104,15 +104,7 @@
             "autoWidth": false,
             "buttons": ["excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#datatable1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+
     });
 </script>
 

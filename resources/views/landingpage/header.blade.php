@@ -24,6 +24,7 @@
                                 <li><a href="{{ url('/home') }}">Home</a></li>
                                 <li><a href="{{ url('/home#pack') }}">Katalog</a></li>
                                 <li><a href="{{ url('/home#gallery') }}">Gallery</a></li>
+                                <li><a href="{{ route('pesanan') }}">Pesanan</a></li>
                                 @guest
                                     <li><a href="{{ route('login') }}">login</a></li>
                                 @else

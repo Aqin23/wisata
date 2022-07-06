@@ -37,7 +37,7 @@
 
 
             </div>
-            <div class="card-body p-0">
+            <div class="card-body">
                 <table id="datatable1" class="table table-striped table-md">
                     <thead>
                         <tr>

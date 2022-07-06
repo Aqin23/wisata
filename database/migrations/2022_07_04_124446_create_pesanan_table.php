@@ -19,8 +19,8 @@ class CreatePesananTable extends Migration
             $table->foreignId('id_detailwisata')->constrained('detailwisata')->onUpdate('cascade')->onDelete('cascade');
             $table->date('tgl_awal');
             $table->date('tgl_akhir');
-            $table->enum('status', ['belum bayar', 'diproses', 'sudah bayar']);
-            $table->string('bukti_bayar')->nullable();
+            $table->enum('status', ['belum bayar', 'diproses', 'sudah bayar', 'dibatalkan']);
+            $table->string('total_harga');
             $table->timestamps();
         });
     }
