@@ -52,4 +52,5 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/checkout-store', [CheckoutController::class, 'store'])->name('checkout-store');
     Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan');
     Route::get('/pesanan-qrcode/{id}', [PesananController::class, 'show'])->name('pesanan-qrcode');
+    Route::get('/pesanan-nota/{id}', [PesananController::class, 'nota'])->name('pesanan-nota');
 });

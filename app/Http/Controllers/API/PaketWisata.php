@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Pesanan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PesananController extends Controller
+class PaketWisata extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,11 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $idUser = Auth()->id();
-        $pesanan = Pesanan::where('id_user', $idUser)->get();
+        $PaketWisata = DB::table('paketwisata')->orderBy('id', 'desc')->get();
 
-        return view('landingpage.main.pesanan', ['pesanan' => $pesanan]);
+        return response()->json([
+            'PaketWisata' => $PaketWisata
+        ], 201);
     }
 
     /**
@@ -49,14 +51,7 @@ class PesananController extends Controller
      */
     public function show($id)
     {
-        $pesananDetail = Pesanan::find($id);
-        return view('landingpage.main.pesanan-qrcode', ['detail' => $pesananDetail]);
-    }
-
-    public function nota($id)
-    {
-        $pesananDetail = Pesanan::find($id);
-        return view('landingpage.main.nota', ['detail' => $pesananDetail]);
+        //
     }
 
     /**

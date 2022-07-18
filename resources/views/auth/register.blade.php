@@ -7,7 +7,11 @@
 
 
                 <div class="card text-white bg-dark my-5 ">
+<<<<<<< Updated upstream
                     <div class="card-header bg-light text-black">{{ __('Register') }}</div>
+=======
+                    <div class="card-header ">{{ __('Register') }}</div>
+>>>>>>> Stashed changes
 
                     <div class="card-body ">
                         <form method="POST" action="{{ route('register') }}">

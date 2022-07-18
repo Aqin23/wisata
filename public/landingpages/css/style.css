@@ -304,7 +304,7 @@ html,body{
 	background: url(../../landingpages/images/home/banner.jpg)no-repeat;
 	background-size: cover;
 	background-position: center;
-	min-height: 1000px;
+	min-height: 800px;
 }
 .about-us:before{
 	position: absolute;
@@ -371,6 +371,11 @@ html,body{
     background: #00d8d5;
     box-shadow: 0 5px 20px rgba(14,15,18,.7);
 	border: 1px solid #00d8d5;
+
+}
+
+.about-view a:hover{
+    text-align: center;
 }
 .travel-mrt-0{
     margin-top: 0px;
@@ -945,10 +950,11 @@ html,body{
     -ms-transition:.5s;
     -o-transition:.5s;
     transition: .5s;
-
+    text-align: center;
 }
 .about-view.packages-btn:hover{
     box-shadow: 0 5px 20px rgba(14,15,18,.3);
+    text-align: center;
 }
 .single-package-item:hover{
     box-shadow: 0 0 20px rgba(0,0,0,.2);

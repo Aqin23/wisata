@@ -14,8 +14,8 @@
             <!--/.gallery-header-->
             <div class="packages-content">
                 <div class="container ">
-                    <div class="row ">
-                        <div class="col-sm-12 text-center">
+                    <div class="row justify-content-center ">
+                        <div class="col-sm-8 ">
                             <ul class="list-group">
                                 @foreach ($pesanan as $d)
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -27,12 +27,18 @@
                                         <span class="">
                                             @if ($d->status == 'dibatalkan')
                                                 <h2>Pesanan dibatalkan </h2>
-                                            @elseif($d->status == 'belum bayar')                                        
+                                            @elseif($d->status == 'belum bayar')
                                                 <a href="{{ route('pesanan-qrcode', $d->id) }}" class="btn btn-primary">
                                                     Bayar
                                                 </a>
-                                                @else
+                                            @else
                                                 <h2>Sudah bayar</h2>
+                                                <div class="about-btn">
+                                                    <a target="_blank" href="{{ route('pesanan-nota', $d->id) }} "
+                                                        class="about-view packages-btn btn">
+                                                        Nota
+                                                    </a>
+                                                </div>
                                             @endif
 
                                         </span>

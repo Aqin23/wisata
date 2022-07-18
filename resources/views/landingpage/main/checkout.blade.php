@@ -29,8 +29,10 @@
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Harga Perhari</label>
-                                    <input type="text" class="form-control" value="{{ $DetailWisata->harga }}" disabled
+                                    <input type="hidden" class="form-control" value="{{ $DetailWisata->harga }}"
                                         id="harga">
+                                    <input type="text" class="form-control"
+                                        value="Rp.{{ number_format($DetailWisata->harga, 0, ',', '.') }}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Tanggal Awal</label>

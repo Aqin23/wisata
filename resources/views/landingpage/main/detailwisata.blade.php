@@ -5,64 +5,70 @@
         <div class="container">
             <div class="gallary-header text-center">
                 <h2>
-                    Katalog
+                    Paket Wisata
                 </h2>
                 <p>
-                    Katalog berbagai wisata di Jawa timur
+                    Berbagai Paket Wisata
                 </p>
             </div>
             <!--/.gallery-header-->
-            <div class="packages-content">
+
+            <div class="blog-content">
                 <div class="row">
                     @foreach ($DetailWisata as $p)
-                        <div class="col-md-4 col-sm-6">
-                            <div class="single-package-item">
-                                <img src="{{ asset('storage/' . $p->paketFk->foto) }}" alt="package-place">
-                                <div class="single-package-item-txt">
-                                    <h3>{{ $p->nama_paket }}</h3>
-                                    <div class="packages-para">
-                                        Paket Wisata {{ $p->nama_paket }}
-                                        {{ $p->harga }}
-                                        {{ $p->desc }}
-                                    </div>
-                                    <!--/.packages-para-->
+                        <div class="col-sm-4 col-md-4">
+                            <div class="thumbnail">
+                                <h2>{{ $p->nama_paket }} </h2>
+                                <div class="thumbnail-img">
+                                    <img src="{{ asset('storage/' . $p->paketFk->foto) }}" alt="blog-img">
+                                    <div class="thumbnail-img-overlay"></div>
+                                    <!--/.thumbnail-img-overlay-->
 
-                                    <!--/.packages-review-->
-                                    <div class="about-btn">
-                                        <a href="{{ route('checkout', $p->id) }}" class="about-view packages-btn">
-                                            Pesan
-                                        </a>
-                                    </div>
-                                    <!--/.about-btn-->
                                 </div>
-                                <!--/.single-package-item-txt-->
+                                <!--/.thumbnail-img-->
+                                <div class="caption mb-2">
+                                    <div class="blog-txt ">
+                                        <h3>
+
+                                            Rp.{{ number_format($p->harga, 0, ',', '.') }}
+
+                                        </h3>
+                                        <p>
+                                            {{ $p->desc }}
+                                        </p>
+
+                                    </div>
+
+                                    <a href="{{ route('checkout', $p->id) }}" class="about-view packages-btn">
+                                        Pesan
+                                    </a>
+
+                                    <!--/.blog-txt-->
+                                </div>
+                                <!--/.caption-->
                             </div>
-                            <!--/.single-package-item-->
+                            <!--/.thumbnail-->
 
                         </div>
                     @endforeach
                     <!--/.col-->
 
-                    <!--/.about-btn-->
+
                 </div>
-                <!--/.single-package-item-txt-->
+                <!--/.row-->
             </div>
-            <!--/.single-package-item-->
 
+
+
+
+            <!--/.row-->
         </div>
-        <!--/.col-->
 
 
-        <!--/.col-->
+
+        <!--/.single-package-item-->
 
 
-        <!--/.col-->
-
-        </div>
-        <!--/.row-->
-        </div>
-        <!--/.packages-content-->
-        </div>
         <!--/.container-->
 
     </section>

@@ -59,10 +59,10 @@
             <div class="about-us-content">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="single-about-us">
-                            <div class="about-us-txt">
+                        <div class="single-about-us ">
+                            <div class="about-us-txt ">
                                 <h2>
-                                    Explore the Beauty of the Beautiful World
+                                    Explore the Beauty of the Beautiful Jember
 
                                 </h2>
                                 <div class="about-btn">
