@@ -45,9 +45,9 @@ class PaketWisataController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
             'nama_wisata' => 'required',
+            'foto' => 'required',
+
 
         ]);
 
